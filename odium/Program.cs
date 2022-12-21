@@ -46,7 +46,10 @@ namespace odium
                     //Thread t = new Thread(new ThreadStart(MapleRunCheck));
                     //t.Start();
                     alert a = new alert();
+                    a.Show();
+                    a.Hide();
                     Application.Run();
+                    a.Dispose();
                 }
                 mutex.Close();
             }

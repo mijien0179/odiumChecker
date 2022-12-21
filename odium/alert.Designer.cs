@@ -81,6 +81,7 @@
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "너 일퀘 했움?";
             this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // contextMenuStrip1
             // 
@@ -88,12 +89,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.종료ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(241, 69);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(121, 36);
             // 
             // 종료ToolStripMenuItem
             // 
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(120, 32);
             this.종료ToolStripMenuItem.Text = "종료";
             this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
             // 
@@ -111,6 +112,7 @@
             this.Name = "alert";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "alert";
+            this.TopMost = true;
             this.TransparencyKey = System.Drawing.SystemColors.Control;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.alert_FormClosing);
             this.Load += new System.EventHandler(this.alert_Load);

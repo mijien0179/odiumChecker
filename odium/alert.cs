@@ -24,6 +24,7 @@ namespace odium
 
             t = new Thread(new ThreadStart(MapleRunCheck));
             t.Start();
+            notifyIcon1.Visible = true;
         }
 
         Thread t;
@@ -38,12 +39,13 @@ namespace odium
         public void open()
         {
             this.Show();
+            Visible = true;
             this.Activate();
         }
 
         void MapleRunCheck()
         {
-            int? procId = null;
+            bool iferr = true;
             while (finder)
             {
                 try
@@ -53,12 +55,7 @@ namespace odium
                     {
                         if (proc.Length > 0)
                         {
-                            if(proc.Length == 1)
-                            {
-                                procId = proc[0].Id;
-                            }
                             running = 1;
-                            MessageBox.Show("1");
                         }
                     }
                     else if (running == 1) // 실행 감지 후
@@ -67,20 +64,24 @@ namespace odium
                         {
                             running = 0;
                             if (this.InvokeRequired) this.Invoke(new MethodInvoker(open));
-                            return;
+                            
                         }
                         else
                         {
-                            MessageBox.Show($"{proc[0].ProcessName} {proc[0].HasExited} {proc.Length} {proc[0].Id}");
+                            //MessageBox.Show($"{proc[0].ProcessName} {proc[0].HasExited} {proc.Length} {proc[0].Id}");
                         }
                     }
-                    proc = null;
                 }
                 catch (Exception ex) {
-                    MessageBox.Show(ex.Message);
+                    if (iferr)
+                    {
+                        StreamWriter w = new StreamWriter($"{Application.StartupPath}\\err.log", true);
+                        w.WriteLine(ex.ToString());
+                        MessageBox.Show(ex.Message);
+                    }
                 };
 
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
             }
         }
 
@@ -110,8 +111,10 @@ namespace odium
         {
             if (!canClose)
             {
+                
                 e.Cancel = true;
-                Hide();
+                Visible = false;
+                return;
             }
 
             finder = false;
@@ -122,7 +125,7 @@ namespace odium
         private void label2_Click(object sender, EventArgs e)
         {
             Process.Start("explorer", "https://maplestory.nexon.com");
-            Close();
+            Visible = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -130,7 +133,8 @@ namespace odium
             Keyboard k = new Keyboard();
             if (k.CtrlKeyDown)
             {
-                this.Close();
+                canClose = false;
+                Visible = false;
             }
             else
             {
@@ -143,9 +147,15 @@ namespace odium
         {
             if(MessageBox.Show("일퀘 했움?을 종료합니다.", "종료 확인", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                //Show();
                 canClose = true;
-                Close();
+                Application.Exit();
             }
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            open();
         }
     }
 }
