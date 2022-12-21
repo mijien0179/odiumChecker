@@ -17,13 +17,13 @@ namespace odium
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            bool debug = true;
+            //bool debug = true;
 
-            if (debug)
-            {
-                Application.Run(new alert());
-                return;
-            }
+            //if (debug)
+            //{
+            //    Application.Run(new alert());
+            //    return;
+            //}
 
             if (args.Length == 0)
             {
