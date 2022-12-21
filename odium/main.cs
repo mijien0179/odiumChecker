@@ -55,5 +55,13 @@ namespace odium
 
             checkBox1.Checked = !checkBox1.Checked;
         }
+
+        private void main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                Process p = Process.Start(Application.ExecutablePath, "--autorun");
+            }
+        }
     }
 }

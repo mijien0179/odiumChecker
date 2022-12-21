@@ -78,6 +78,7 @@
             this.Name = "main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "너, 일퀘 했움?";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.main_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
