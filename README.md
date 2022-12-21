@@ -1,11 +1,19 @@
 # odiumChecker
 메이플스토리가 종료되고나서야 일퀘 했는지 뒷북치는 알리미
 
+#### 다운로드
+https://github.com/mijien0179/odiumChecker/releases/tag/v1.0
+
 #### Youtube
 이미지 클릭시 시연 영상 Youtube로 이동합니다.
 [![Untitled_1 3 1](https://user-images.githubusercontent.com/40613626/208830689-ae27f93f-d07c-49f5-942d-61459bdb891c.png)](https://youtu.be/7SvIDnwGuho)
 
-
+## 개발 정보
+- Windows 10
+- Visual Studio 2022 v17.4.2
+- .NET 6 C#
+- Ryzen7 5800X / 64G RAM
+- GTX 1660 SUPER 6G
 
 
 ## 개요
